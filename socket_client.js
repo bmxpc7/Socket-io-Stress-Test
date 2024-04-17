@@ -3,7 +3,7 @@ const fs = require('fs'),
       clientIP = conf.clientIP,
       serverIP = conf.serverIP,
       serverPort = conf.serverPort,
-      socketClient = 'socket.io/node_modules/socket.io-client',
+      socketClient = 'socket.io-client',
       maxReconnect = conf.reconnectAttempt || 3,
       connectDelay = conf.ReconnectDelay || 2000,
       numberOfCalls = conf.numberOfCalls;
@@ -124,6 +124,11 @@ function startLoop(){
       });
     };
   };
+};
+
+function exit(){
+  console.log('Ending... exiting Node.')
+  process.exit(1);
 };
 
 function exit(){
