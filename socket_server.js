@@ -9,15 +9,15 @@ const fs = require('fs'),
 require('log-timestamp');
 
 var server = app.listen(serverPort),
-    socket = require('socket.io').listen(server);
-
+    socket = require('socket.io');
+const io = new socket.Server(server)
 console.log("================================================");
 console.log('Socket server listening: '+serverIP+':'+serverPort);
 console.log("================================================");
 console.log("============ Starting Socket Server ============");
 console.log("================================================");
 var i = 0;
-socket.on('connection', function (socket) {
+io.on('connection', function (socket) {
   socket.on(conf.eventName, function(err, callback){
     i++;
     console.log(i);
@@ -41,3 +41,4 @@ function isJsonString(str) {
   };
   return true;
 };
+
